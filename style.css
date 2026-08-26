@@ -1,0 +1,6 @@
+/* resetar as configurações do css */
+*{
+    margin: 0;/* No CSS, a propriedade margin: 0; significa que você está removendo completamente o espaço externo (a margem) nos quatro lados do elemento */
+    padding: 0;/* significa que você está removendo completamente o espaço interno nos quatro lados do elemento. */
+    box-sizing: border-box;
+}
