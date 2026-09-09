@@ -4,3 +4,92 @@
     padding: 0;/* significa que você está removendo completamente o espaço interno nos quatro lados do elemento. */
     box-sizing: border-box;
 }
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: 'Arial', sans-serif;
+
+background-color: #f4f6f9;
+    color: #216fa356;
+    line-height: 1.6;
+    padding: 20px;
+}
+
+
+h1 {
+    color: #1a365d;
+    text-align: center;
+    font-size: 2.5rem;
+    margin-bottom: 15px;
+}
+
+h2 {
+    color: #2b6cb0;
+    margin-top: 10px;
+    margin-bottom: 10px;
+    border-bottom: 2px solid #830a2f;
+    padding-bottom: 5px;
+}
+
+p {
+    font-size: 1.1rem;
+    margin-bottom: 15px;
+}
+
+img {
+    max-width: 220px;
+    height: auto;
+    border-radius: 8px;
+    display: block;
+    margin: 0 auto 20px auto;
+    box-shadow: 0 4px 6px rgba(0,0,0,0.1);
+}
+
+
+
+ul {
+
+
+    list-style-type: square;
+    padding-left: 25px;
+    margin-bottom: 15px;
+}
+
+li {
+    padding: 5px 0;
+    font-weight: bold;
+}
+
+a {
+    display: inline-block;
+    background-color: #3182ce;
+    color: #0fbd17;
+    padding: 10px 18px;
+    text-decoration: none;
+    border-radius: 5px;
+    margin: 10px 0;
+}
+
+address {
+    font-style: normal;
+    background-color: #1a4f94;
+    padding: 15px;
+    border-radius: 6px;
+    margin-top: 10px;
+}
+
+body {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+/* Limitando a largura máxima para centralizar o conteúdo no meio da tela */
+h1, h2, p, ul, a, address {
+    width: 100%;
+    max-width: 700px;
+}
+
