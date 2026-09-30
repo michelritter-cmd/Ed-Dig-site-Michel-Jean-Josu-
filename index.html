@@ -1,4 +1,126 @@
 <!DOCTYPE html>
+<!-- O atributo lang="pt-BR" é fundamental para A11y: informa aos leitores de tela a pronúncia e o idioma correto do conteúdo. -->
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <!-- Garante a renderização adequada e responsividade em dispositivos móveis. -->
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>DevGames | Estúdio Especialista em Jogos Online e Multiplayer</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+    <!--
+      LINK DE ATALHO PARA CONTEÚDO (Skip Link):
+      Essencial para navegadores por teclado e leitores de tela. Permite saltar diretamente
+      para o conteúdo principal sem precisar passar por todos os links do menu repetidamente.
+    -->
+    <a href="#conteudo-principal" class="skip-link">Pular para o conteúdo principal</a>
+
+    <!--
+      <header>: Tag semântica que define o cabeçalho principal da página.
+    -->
+    <header class="header-principal">
+        <div class="container header-container">
+            <!-- Logo da empresa. Usa link para voltar à página principal se necessário. -->
+            <a href="#inicio" class="logo" aria-label="DevGames - Ir para a página inicial">
+                🎮 DevGames
+            </a>
+
+            <!--
+              <nav>: Tag semântica para indicar blocos de navegação principal.
+              aria-label="Menu principal": Ajuda leitores de tela a diferenciar este menu de outros menus da página.
+            -->
+            <nav aria-label="Menu principal">
+                <ul class="menu-lista">
+                    <li><a href="#inicio" class="menu-link">Início</a></li>
+                    <li><a href="#sobre" class="menu-link">Sobre Nós</a></li>
+                    <li><a href="#jogos" class="menu-link">Nossos Jogos</a></li>
+                    <li><a href="#contato" class="menu-link">Contato</a></li>
+                </ul>
+            </nav>
+        </div>
+    </header>
+
+    <!--
+      <main>: Tag semântica para indicar o conteúdo único e principal da página.
+      id="conteudo-principal": Alvo do link de atalho (skip-link).
+      tabindex="-1": Permite que o foco da navegação vá direto para o <main> quando o skip-link for acionado.
+    -->
+    <main id="conteudo-principal" tabindex="-1">
+
+        <!--
+          <section>: Define uma seção temática da página.
+          aria-labelledby: Vincula o título do cabeçalho à seção para dar contexto aos leitores de tela.
+        -->
+        <section id="inicio" class="hero-section" aria-labelledby="titulo-hero">
+            <div class="container hero-container">
+                <!-- Apenas UM <h1> por página para manter a hierarquia semântica correta. -->
+                <h1 id="titulo-hero">Especialistas em Jogos Online e Multiplayer</h1>
+                <p class="hero-descricao">
+                    Desenvolvemos experiências imersivas, conectando jogadores em todo o mundo através de universos de tiro tático e RPGs de mundo aberto.
+                </p>
+                <!-- Botão de chamada para ação (CTA) alinhado com foco acessível -->
+                <a href="#jogos" class="btn btn-principal">Conheça nossos jogos</a>
+            </div>
+        </section>
+
+        <!-- SEÇÃO INSTITUCIONAL / SOBRE -->
+        <section id="sobre" class="secao" aria-labelledby="titulo-sobre">
+            <div class="container">
+                <!-- <h2> para títulos de seções principais dentro de <main>. -->
+                <h2 id="titulo-sobre">Sobre a DevGames</h2>
+                <p>
+                    A DevGames é uma produtora focada em criar mundos virtuais expansivos e dinâmicos. Nossos títulos combinam tecnologia multiplayer de baixa latência, gráficos de ponta e mecânicas engajadoras para proporcionar diversão sem limites aos jogadores.
+                </p>
+            </div>
+        </section>
+
+        <!-- SEÇÃO DE JOGOS / PRODUTOS -->
+        <section id="jogos" class="secao secao-destaque" aria-labelledby="titulo-jogos">
+            <div class="container">
+                <h2 id="titulo-jogos">Nossos Principais Jogos</h2>
+                <div class="cards-grid">
+                    
+                    <!-- Card 1 -->
+                    <article class="card">
+                        <!-- <h3> para subtítulos dentro das seções (respeitando a hierarquia h1 -> h2 -> h3). -->
+                        <h3>CyberStrike Online</h3>
+                        <p class="card-categoria"><strong>Gênero:</strong> Tiro Tático em Primeira Pessoa (FPS)</p>
+                        <p>Partidas competitivas em equipe com combate rápido, armas customizáveis e mapas estratégicos baseados em cenários futuristas.</p>
+                        <!-- Ações acessíveis do card -->
+                        <div class="card-acoes">
+                            <a href="#" class="btn btn-secundario" aria-label="Saiba mais sobre CyberStrike Online">Ver Detalhes</a>
+                        </div>
+                    </article>
+
+                    <!-- Card 2 -->
+                    <article class="card">
+                        <h3>Horizon Open World</h3>
+                        <p class="card-categoria"><strong>Gênero:</strong> RPG de Mundo Aberto Multiplayer</p>
+                        <p>Explore um vasto continente repleto de missões, guilds e batalhas de grande escala contra chefes globais em tempo real.</p>
+                        <div class="card-acoes">
+                            <a href="#" class="btn btn-secundario" aria-label="Saiba mais sobre Horizon Open World">Ver Detalhes</a>
+                        </div>
+                    </article>
+
+                </div>
+            </div>
+        </section>
+
+        <!-- SEÇÃO DE CONTATO E FORMULÁRIO ACESSÍVEL -->
+        <section id="contato" class="secao" aria-labelledby="titulo-contato">
+            <div class="container">
+                <h2 id="titulo-contato">Fale Conosco</h2>
+                <p>Entre em contato com nossa equipe para parcerias, suporte ou dúvidas técnicas.</p>
+
+                <!--
+                  <form>: Estrutura de formulário.
+                  novalidate (opcional se tratar com JS, mantido sem para validação padrão acessível do navegador).
+                -->
+                <form action="#" method="post" class="formulario-contato">
+                    
+                    <!--!DOCTYPE html>
 <html lang="pt-BR">
 <head>
     <meta charset="UTF-8">
@@ -13,4 +135,57 @@
   <source>file:///tmp/guest-ig70k6/%C3%81rea%20de%20trabalho/Jogos%20Online/os-17-melhores-jogos-android-multiplayer-2014.html
   
   </body>
+</html>
+                      Acessibilidade em formulários:
+                      Sempre associar o <label> ao <input> através dos atributos `for` e `id` idênticos.
+                      Isso garante que leitores de tela leiam o rótulo ao selecionar o campo e amplia a área de clique.
+                    -->
+                    <div class="campo-grupo">
+                        <label for="nome">Nome Completo <span class="obrigatorio" aria-hidden="true">*</span></label>
+                        <input type="text" id="nome" name="nome" required aria-required="true" autocomplete="name">
+                    </div>
+
+                    <div class="campo-grupo">
+                        <label for="email">E-mail de Contato <span class="obrigatorio" aria-hidden="true">*</span></label>
+                        <input type="email" id="email" name="email" required aria-required="true" autocomplete="email">
+                    </div>
+
+                    <div class="campo-grupo">
+                        <label for="assunto">Assunto</label>
+                        <select id="assunto" name="assunto">
+                            <option value="suporte">Suporte Técnico</option>
+                            <option value="parcerias">Parcerias e Imprensa</option>
+                            <option value="outros">Outros Assuntos</option>
+                        </select>
+                    </div>
+
+                    <div class="campo-grupo">
+                        <label for="mensagem">Mensagem <span class="obrigatorio" aria-hidden="true">*</span></label>
+                        <textarea id="mensagem" name="mensagem" rows="5" required aria-required="true"></textarea>
+                    </div>
+
+                    <!-- Botão de envio usando a tag correta <button type="submit"> -->
+                    <button type="submit" class="btn btn-principal">Enviar Mensagem</button>
+                </form>
+            </div>
+        </section>
+
+    </main>
+
+    <!--
+      <footer>: Tag semântica para o rodapé do site.
+    -->
+    <footer class="rodape">
+        <div class="container rodape-container">
+            <p>&copy; 2026 DevGames Estúdio. Todos os direitos reservados.</p>
+            <nav aria-label="Links do rodapé">
+                <ul class="rodape-links">
+                    <li><a href="#">Termos de Uso</a></li>
+                    <li><a href="#">Política de Privacidade</a></li>
+                </ul>
+            </nav>
+        </div>
+    </footer>
+
+</body>
 </html>

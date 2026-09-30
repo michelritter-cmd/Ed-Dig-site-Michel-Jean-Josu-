@@ -1,37 +1,185 @@
-/* resetar as configurações do css */
-*{
-    margin: 0;/* No CSS, a propriedade margin: 0; significa que você está removendo completamente o espaço externo (a margem) nos quatro lados do elemento */
-    padding: 0;/* significa que você está removendo completamente o espaço interno nos quatro lados do elemento. */
-    box-sizing: border-box;
-}
+/* ==========================================================================
+   1. RESET GLOBAL E VARIÁVEIS DE COR (WCAG CONTRASTE DE COR NÍVEL AA/AAA)
+   ========================================================================== */
+
+/*
+   RESET CSS:
+   Remove margens e preenchimentos padrão do navegador e ajusta o cálculo de tamanho de caixas
+   (box-sizing: border-box garante que padding e borders não estoure a largura total dos elementos).
+*/
+* {
     margin: 0;
     padding: 0;
     box-sizing: border-box;
 }
 
-body {
-    font-family: 'Arial', sans-serif;
-
-background-color: #f4f6f9;
-    color: #216fa356;
-    line-height: 1.6;
-    padding: 20px;
+/*
+   VARIÁVEIS CSS E CORES COM ALTO CONTRASTE (WCAG 1.4.3):
+   Utilizamos combinações com taxa de contraste superior a 4.5:1 para texto normal e 3:1 para componentes visuais.
+*/
+:root {
+    --cor-primaria: #1a365d;         /* Azul escuro (Texto principal e títulos) */
+    --cor-secundaria: #2b6cb0;       /* Azul médio para destaques */
+    --cor-acao: #1e6b37;             /* Verde escuro para botões principais (Substitui o verde claro sem contraste) */
+    --cor-acao-hover: #144824;       /* Verde ainda mais escuro para o estado hover */
+    --cor-fundo: #f4f6f9;            /* Fundo suave claro */
+    --cor-superficie: #ffffff;       /* Fundo de cards, cabeçalhos e formulários */
+    --cor-texto: #1a202c;            /* Texto escuro sólido (Corrigido da transparência problemática #216fa356) */
+    --cor-borda: #cbd5e0;            /* Borda visível e suave */
+    --cor-foco: #ffbf00;             /* Amarelo de altíssimo contraste para indicação visual de foco */
+    --cor-foco-linha: #000000;       /* Anel secundário escuro para o foco */
+    --fonte-principal: 'Arial', sans-serif;
 }
 
+html {
+    scroll-behavior: smooth;
+    font-size: 100%; /* Respeita as configurações do tamanho de fonte do usuário no navegador */
+}
+
+body {
+    font-family: var(--fonte-principal);
+    background-color: var(--cor-fundo);
+    color: var(--cor-texto);
+    line-height: 1.6; /* Espaçamento de linha adequado para facilitar a leitura conforme WCAG 1.4.12 */
+    display: flex;
+    flex-direction: column;
+    min-height: 100vh;
+}
+
+/* ==========================================================================
+   2. ACESSIBILIDADE DE TECLADO E FOCO VISÍVEL (WCAG 2.4.7)
+   ========================================================================== */
+
+/*
+   ESTADO DE FOCO (:focus-visible):
+   A navegação via teclado exige que o usuário veja EXATAMENTE qual elemento está selecionado no momento.
+   Nunca use `outline: none` sem criar um anel de foco bem definido como este abaixo.
+*/
+a:focus-visible,
+button:focus-visible,
+input:focus-visible,
+select:focus-visible,
+textarea:focus-visible {
+    outline: 3px solid var(--cor-foco);
+    outline-offset: 3px;
+    box-shadow: 0 0 0 5px var(--cor-foco-linha);
+}
+
+/*
+   SKIP-LINK (Link de Atalho):
+   Oculto visualmente até receber o foco via tecla TAB.
+*/
+.skip-link {
+    position: absolute;
+    top: -100px;
+    left: 10px;
+    background-color: var(--cor-foco);
+    color: #000000;
+    padding: 12px 18px;
+    font-weight: bold;
+    text-decoration: none;
+    z-index: 9999;
+    border: 2px solid #000000;
+    border-radius: 4px;
+    transition: top 0.2s ease;
+}
+
+.skip-link:focus {
+    top: 10px;
+}
+
+/* ==========================================================================
+   3. ESTRUTURA DE CONTAINER E CABEÇALHO (FLEXBOX)
+   ========================================================================== */
+
+.container {
+    width: 90%;
+    max-width: 1100px;
+    margin: 0 auto;
+}
+
+/*
+   CABEÇALHO COM FLEXBOX:
+   Alinha a logo à esquerda e o menu à direita (justify-content: space-between).
+*/
+.header-principal {
+    background-color: var(--cor-superficie);
+    border-bottom: 2px solid var(--cor-borda);
+    padding: 1rem 0;
+    position: sticky;
+    top: 0;
+    z-index: 100;
+}
+
+.header-container {
+    display: flex;                /* FLEXBOX: Ativa o modelo flexível no container */
+    justify-content: space-between;/* Separa a marca do menu nas extremidades */
+    align-items: center;          /* Alinha os itens verticalmente ao centro */
+    flex-wrap: wrap;              /* Permite a quebra de linha em telas pequenas */
+    gap: 1rem;
+}
+
+.logo {
+    font-size: 1.5rem;
+    font-weight: bold;
+    color: var(--cor-primaria);
+    text-decoration: none;
+}
+
+/* MENU DE NAVEGAÇÃO COM FLEXBOX */
+.menu-lista {
+    display: flex;                /* FLEXBOX: Organiza os itens <li> em uma linha horizontal */
+    list-style: none;             /* Removidos os marcadores padrão da lista */
+    gap: 1.5rem;                  /* Espaçamento interno limpo entre os links */
+}
+
+.menu-link {
+    color: var(--cor-primaria);
+    text-decoration: none;
+    font-weight: bold;
+    padding: 0.5rem 0.25rem;
+}
+
+.menu-link:hover {
+    text-decoration: underline;
+}
+
+/* ==========================================================================
+   4. CONTEÚDO PRINCIPAL E SEÇÕES (TYPOGRAPHY & FLEXBOX)
+   ========================================================================== */
+
+main {
+    flex: 1; /* Garante que o conteúdo ocupe a tela toda empurrando o rodapé para a base */
+}
+
+.secao {
+    padding: 3rem 0;
+}
+
+.secao-destaque {
+    background-color: var(--cor-superficie);
+}
 
 h1 {
-    color: #1a365d;
-    text-align: center;
+    color: #ffffff;
     font-size: 2.5rem;
-    margin-bottom: 15px;
+    margin-bottom: 1rem;
+    text-align: center;
 }
 
 h2 {
-    color: #2b6cb0;
+    color: var(--cor-primaria);
+    font-size: 2rem;
     margin-top: 10px;
-    margin-bottom: 10px;
-    border-bottom: 2px solid #830a2f;
-    padding-bottom: 5px;
+    margin-bottom: 15px;
+    border-bottom: 3px solid var(--cor-secundaria);
+    padding-bottom: 8px;
+}
+
+h3 {
+    color: var(--cor-secundaria);
+    font-size: 1.3rem;
+    margin: 15px 0 10px 0;
 }
 
 p {
@@ -39,57 +187,196 @@ p {
     margin-bottom: 15px;
 }
 
-img {
-    max-width: 220px;
-    height: auto;
-    border-radius: 8px;
-    display: block;
-    margin: 0 auto 20px auto;
-    box-shadow: 0 4px 6px rgba(0,0,0,0.1);
-}
-
-
-
 ul {
-
-
     list-style-type: square;
     padding-left: 25px;
     margin-bottom: 15px;
 }
 
 li {
-    padding: 5px 0;
+    padding: 4px 0;
     font-weight: bold;
 }
 
-a {
+/* Hero Section */
+.hero-section {
+    background-color: var(--cor-primaria);
+    color: #ffffff;
+    padding: 4rem 0;
+    text-align: center;
+}
+
+.hero-container {
+    display: flex;
+    flex-direction: column;       /* FLEXBOX: Organiza os elementos do banner em coluna */
+    align-items: center;          /* Centraliza o conteúdo no eixo horizontal */
+    gap: 1rem;
+}
+
+.hero-descricao {
+    font-size: 1.25rem;
+    max-width: 750px;
+}
+
+/* GRID DE CARDS COM FLEXBOX */
+.cards-grid {
+    display: flex;                /* FLEXBOX: Posiciona os cards em linha */
+    flex-wrap: wrap;              /* Quebra os cards para a linha de baixo se faltar espaço */
+    gap: 1.5rem;
+    margin-top: 1.5rem;
+}
+
+.card {
+    background-color: var(--cor-fundo);
+    border: 1px solid var(--cor-borda);
+    border-radius: 8px;
+    padding: 1.5rem;
+    flex: 1 1 300px;             /* FLEXBOX: Cresce, encolhe e mantém base flexível de 300px */
+    display: flex;
+    flex-direction: column;       /* Organiza o conteúdo interno do card verticalmente */
+    justify-content: space-between;/* Garante o alinhamento dos botões no final do card */
+}
+
+/* ==========================================================================
+   5. BOTÕES E COMPONENTES INTERATIVOS
+   ========================================================================== */
+
+.btn {
     display: inline-block;
-    background-color: #3182ce;
-    color: #0fbd17;
-    padding: 10px 18px;
+    padding: 10px 20px;
+    font-size: 1rem;
+    font-weight: bold;
     text-decoration: none;
     border-radius: 5px;
-    margin: 10px 0;
+    border: 2px solid transparent;
+    cursor: pointer;
+    text-align: center;
+    transition: background-color 0.2s ease, color 0.2s ease;
 }
 
-address {
-    font-style: normal;
-    background-color: #1a4f94;
-    padding: 15px;
-    border-radius: 6px;
-    margin-top: 10px;
+/* Botão principal com alto contraste (Fundo escuro e texto branco) */
+.btn-principal {
+    background-color: var(--cor-acao);
+    color: #ffffff;
 }
 
-body {
+.btn-principal:hover {
+    background-color: var(--cor-acao-hover);
+}
+
+.btn-secundario {
+    background-color: transparent;
+    color: var(--cor-secundaria);
+    border-color: var(--cor-secundaria);
+}
+
+.btn-secundario:hover {
+    background-color: var(--cor-secundaria);
+    color: #ffffff;
+}
+
+/* ==========================================================================
+   6. FORMULÁRIO ACESSÍVEL (ESTRUTURA FLEXBOX)
+   ========================================================================== */
+
+.formulario-contato {
+    background-color: var(--cor-superficie);
+    padding: 2rem;
+    border-radius: 8px;
+    border: 1px solid var(--cor-borda);
+    max-width: 650px;
+    margin: 1.5rem 0;
     display: flex;
-    flex-direction: column;
-    align-items: center;
+    flex-direction: column;       /* FLEXBOX: Organiza os grupos de inputs verticalmente */
+    gap: 1.25rem;
 }
 
-/* Limitando a largura máxima para centralizar o conteúdo no meio da tela */
-h1, h2, p, ul, a, address {
+.campo-grupo {
+    display: flex;
+    flex-direction: column;       /* Garante que a <label> fique imediatamente acima do seu <input> */
+    gap: 0.5rem;
+}
+
+label {
+    font-weight: bold;
+    color: var(--cor-primaria);
+}
+
+.obrigatorio {
+    color: #c53030;               /* Vermelho destacado para indicação visual de campo obrigatório */
+}
+
+input,
+select,
+textarea {
     width: 100%;
-    max-width: 700px;
+    padding: 0.75rem;
+    border: 1px solid var(--cor-borda);
+    border-radius: 5px;
+    font-size: 1rem;
+    font-family: inherit;
+    background-color: #ffffff;
+    color: var(--cor-texto);
 }
 
+/* ==========================================================================
+   7. RODAPÉ E ESTILOS DA TAG <address>
+   ========================================================================== */
+
+.rodape {
+    background-color: var(--cor-primaria);
+    color: #ffffff;
+    padding: 2rem 0;
+    margin-top: 3rem;
+}
+
+.rodape-container {
+    display: flex;                /* FLEXBOX */
+    justify-content: space-between;
+    align-items: center;
+    flex-wrap: wrap;
+    gap: 1.5rem;
+}
+
+/*
+   Ajuste na tag <address>:
+   Mantida com visual limpo, com fundo escuro de alto contraste e sem usar estilos desatualizados.
+*/
+address.contato-empresa {
+    font-style: normal;
+    line-height: 1.5;
+}
+
+.link-rodape {
+    color: #ffffff;
+    text-decoration: underline;
+}
+
+.link-rodape:hover {
+    color: var(--cor-foco);
+}
+
+/* ==========================================================================
+   8. RESPONSIVIDADE ACESSÍVEL (MEDIA QUERIES)
+   ========================================================================== */
+
+@media (max-width: 650px) {
+    .header-container,
+    .rodape-container {
+        flex-direction: column;   /* Empilha os itens do cabeçalho e rodapé no celular */
+        align-items: flex-start;
+    }
+
+    .menu-lista {
+        flex-direction: column;   /* Menu em formato de lista vertical para o celular */
+        gap: 0.75rem;
+    }
+
+    h1 {
+        font-size: 1.8rem;
+    }
+
+    h2 {
+        font-size: 1.5rem;
+    }
+}
